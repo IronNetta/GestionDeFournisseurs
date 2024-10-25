@@ -82,3 +82,7 @@ src/
 
 - **Sébastien De Laet** - Développeur
 
+## Licence
+
+Ce projet est sous licence ISC. Voir le fichier [LICENSE](LICENSE) pour plus d’informations.
+
