@@ -11,6 +11,8 @@ Les coordonnées d'un fournisseur comprennent :
 - Une adresse e-mail
 - Un statut indiquant si une commande est en cours
 
+<img src="Sans titre.png" alt="Description de l'image" />
+
 ## Fonctionnalités
 
 L'application propose plusieurs fonctionnalités :
