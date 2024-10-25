@@ -1,0 +1,55 @@
+Gestion de fournisseurs
+L’entreprise « TestLogistique » désire pouvoir gérer ses fournisseurs via une application.
+
+L’application devra permettre de gérer les coordonnées d’au maximum 50 fournisseurs.
+Les coordonnées d’un fournisseur se définissent par
+Un identifiant : numérique {numéro attribué par l’application ne pouvant être réutilisé même lorsqu’un fournisseur est supprimé.}
+Un nom : texte {Le nom du fournisseur le nom doit être unique parmi les noms de fournisseurs enregistrés.}
+Un téléphone : texte {Le numéro de téléphone du fournisseur.}
+Un mail texte {L’adresse mail du fournisseur}
+Commande : logique {vrai si l’entreprise attend une commande de ce fournisseur}
+L’application commence par proposer un menu qui permet de choisir une des fonctions de l’application ou de fermer le programme.
+Quand l’utilisateur choisit une fonction le programme l’exécute (en 1 ou plusieurs étapes si nécessaire) puis réaffiche le menu.
+Fonction de l’application
+1.       Ajouter un fournisseur
+Cette fonctionnalité n’est disponible que si le nombre de fournisseurs enregistrés est inférieur à 50.
+Un fournisseur ne peut être ajouté que si son nom est unique (absent des noms de fournisseurs déjà enregistrés)
+Un fournisseur ne peut être ajouté que si son nom sans les espaces contient au moins un caractère.
+Le numéro du fournisseur attribué par le programme est égal au numéro attribué lors de l’ajout précédent + 1
+A la fin de l’encodage des coordonnées d’un fournisseur le programme proposera de valider ou pas l’enregistrement des coordonnées du fournisseur.
+Si toutes les contraintes sont respectées et que l’utilisateur valide l’enregistrement le fournisseur est ajouté à la liste des fournisseurs.
+2.       Lister les fournisseurs
+Cette fonctionnalité n’est disponible que si au moins un fournisseur est enregistré
+Le programme affichera le numéro et le nom de tous les fournisseurs enregistrés
+3.       Rechercher un fournisseur par numéro
+Cette fonctionnalité n’est disponible que si au moins un fournisseur est enregistré
+L’utilisateur entre un numéro de fournisseur
+Si le numéro correspond au numéro d’un fournisseur enregistré
+Le programme affiche toutes les coordonnées du fournisseur.
+Sinon le programme affiche un message signalant l’absence de fournisseur.
+4.       Rechercher un fournisseur par nom
+Cette fonctionnalité n’est disponible que si au moins un fournisseur est enregistré
+L’utilisateur entre un nom d’utilisateur
+Si le nom correspond au nom d’un fournisseur enregistré
+Le programme affiche toutes les coordonnées du fournisseur.
+Sinon le programme affiche un message signalant l’absence de fournisseur.
+5.       Modification des coordonnées d’un fournisseur
+Cette fonctionnalité n’est disponible que si au moins un fournisseur est enregistré
+L’utilisateur entre le numéro du fournisseur à supprimer
+S’il ne connait pas le numéro il pourra préalablement le retrouver soit via la fonction de listage soit via la recherche par nom
+Si le numéro correspond à un fournisseur
+L’application affiche les coordonnées du fournisseur et un menu reprenant le nom des informations modifiables ainsi qu’une option de confirmation et une option d’annulation.
+Quand l’utilisateur choisit une des informations à modifier
+Le programme saisi la nouvelle de valeur et la sauvegarde provisoirement (si la valeur est valide)
+Le programme recommence à l’affichage des coordonnées (en tenant compte des modifications)
+Quand l’utilisateur confirme les modifications celle-ci sont enregistrée dans la liste des fournisseurs et la fonctionnalité se termine
+Quand l’utilisateur annule les modifications celle-ci sont abandonnées, la liste des fournisseurs reste la même et la fonctionnalité se termine
+6.       Suppression d’un fournisseur
+Cette fonctionnalité n’est disponible que si au moins un fournisseur est enregistré
+L’utilisateur entre le numéro du fournisseur à supprimer
+S’il ne connait pas le numéro il pourra préalablement le retrouver soit via la fonction de listage soit via la recherche par nom
+Si le numéro correspond à un fournisseur et que le fournisseur n’a pas de commande en cours
+L’application affiche toutes les coordonnées du fournisseur et demande confirmation de la suppression
+Si l’utilisateur confirme la suppression le fournisseur est supprimé de la liste (le numéro du fournisseur ne pourra pas être réutilisé pour un autre)
+Sinon
+L’application affichera un message de refus de suppression
