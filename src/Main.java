@@ -135,54 +135,66 @@ public class Main {
         }
     }
 
+
     static void modifierFournisseur(Scanner scanner) {
         if (fournisseurs.isEmpty()) {
             System.out.println("Aucun fournisseur enregistré.");
             return;
         }
 
-        System.out.print("Entrez le numéro du fournisseur à modifier: ");
+        System.out.print("Entrez l'id du fournisseur à modifier: ");
         int numero = scanner.nextInt();
         scanner.nextLine();
 
         Fournisseur fournisseur = trouverFournisseurParId(numero);
         if (fournisseur != null) {
             System.out.println(fournisseur);
-            System.out.println("Que souhaitez-vous modifier ?");
-            System.out.println("1. Nom\n2. Téléphone\n3. Email\n4. Commande\n0. Annuler");
 
-            int choix = scanner.nextInt();
-            scanner.nextLine();
+            int choix = -1;
+            while (choix != 0) {
+                System.out.println("Que souhaitez-vous modifier ?");
+                System.out.println("1. Nom\n2. Téléphone\n3. Email\n4. Commande\n0. Annuler");
 
-            switch (choix) {
-                case 1:
-                    System.out.print("Entrez le nouveau nom: ");
-                    String nouveauNom = scanner.nextLine().trim();
-                    if (!existeNom(nouveauNom)) {
-                        fournisseur.nom = nouveauNom;
-                        System.out.println("Nom mis à jour.");
-                    } else {
-                        System.out.println("Nom déjà utilisé.");
+                if (scanner.hasNextInt()) {
+                    choix = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (choix) {
+                        case 1:
+                            System.out.print("Entrez le nouveau nom: ");
+                            String nouveauNom = scanner.nextLine().trim();
+                            if (!existeNom(nouveauNom)) {
+                                fournisseur.nom = nouveauNom;
+                                System.out.println("Nom mis à jour.");
+                            } else {
+                                System.out.println("Nom déjà utilisé.");
+                            }
+                            break;
+                        case 2:
+                            System.out.print("Entrez le nouveau téléphone: ");
+                            fournisseur.telephone = scanner.nextLine();
+                            System.out.println("Téléphone mis à jour.");
+                            break;
+                        case 3:
+                            System.out.print("Entrez le nouvel email: ");
+                            fournisseur.email = scanner.nextLine();
+                            System.out.println("Email mis à jour.");
+                            break;
+                        case 4:
+                            System.out.print("Attendez-vous une commande ? (oui/non): ");
+                            fournisseur.commandeEnCours = scanner.nextLine().equalsIgnoreCase("oui");
+                            System.out.println("Statut de la commande mis à jour.");
+                            break;
+                        case 0:
+                            System.out.println("Modification annulée.");
+                            return;
+                        default:
+                            System.out.println("Choix invalide, veuillez réessayer.");
                     }
-                    break;
-                case 2:
-                    System.out.print("Entrez le nouveau téléphone: ");
-                    fournisseur.telephone = scanner.nextLine();
-                    System.out.println("Téléphone mis à jour.");
-                    break;
-                case 3:
-                    System.out.print("Entrez le nouvel email: ");
-                    fournisseur.email = scanner.nextLine();
-                    System.out.println("Email mis à jour.");
-                    break;
-                case 4:
-                    System.out.print("Attendez-vous une commande ? (oui/non): ");
-                    fournisseur.commandeEnCours = scanner.nextLine().equalsIgnoreCase("oui");
-                    System.out.println("Statut de la commande mis à jour.");
-                    break;
-                case 0:
-                    System.out.println("Modification annulée.");
-                    return;
+                } else {
+                    System.out.println("Entrée non valide, veuillez entrer un nombre.");
+                    scanner.nextLine();
+                }
             }
         } else {
             System.out.println("Aucun fournisseur trouvé avec ce numéro.");
